@@ -52,9 +52,14 @@ const Header = () => {
             {/* Logo */}
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-2xl font-bold text-white hover:text-[#00FF7F] transition-colors"
+              className="flex items-center gap-2 text-2xl font-bold text-white hover:text-[#00FF7F] transition-colors"
               style={{ textShadow: '0 0 10px #00FF7F' }}
             >
+              <img
+                src="/images/fasttrack-icon.png"
+                alt="FastTrack"
+                className="w-8 h-8 rounded-lg"
+              />
               FastTrack
             </button>
 

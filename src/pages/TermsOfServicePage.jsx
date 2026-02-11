@@ -35,8 +35,16 @@ const TermsOfServicePage = () => {
         <title>Terms of Service - FastTrack Rides</title>
         <meta
           name="description"
-          content="Terms of Service for FastTrack Rides, the precision GPS acceleration timer app for iOS."
+          content="Terms of Service for FastTrack Rides, the precision GPS acceleration timer app for iOS. Read our terms for using the app responsibly."
         />
+        <meta property="og:title" content="Terms of Service - FastTrack Rides" />
+        <meta property="og:description" content="Terms of Service for FastTrack Rides, the precision GPS acceleration timer app for iOS." />
+        <meta property="og:image" content="/images/fasttrack-icon.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Terms of Service - FastTrack Rides" />
+        <meta name="twitter:description" content="Terms of Service for FastTrack Rides, the precision GPS acceleration timer app for iOS." />
+        <meta name="twitter:image" content="/images/fasttrack-icon.png" />
+        <link rel="canonical" href="/terms" />
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">

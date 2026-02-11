@@ -37,6 +37,14 @@ const PrivacyPolicyPage = () => {
           name="description"
           content="Privacy Policy for FastTrack Rides. Learn how we collect, use, and protect your personal data and location information."
         />
+        <meta property="og:title" content="Privacy Policy - FastTrack Rides" />
+        <meta property="og:description" content="Privacy Policy for FastTrack Rides. Learn how we collect, use, and protect your personal data and location information." />
+        <meta property="og:image" content="/images/fasttrack-icon.png" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Privacy Policy - FastTrack Rides" />
+        <meta name="twitter:description" content="Privacy Policy for FastTrack Rides. Learn how we collect, use, and protect your personal data." />
+        <meta name="twitter:image" content="/images/fasttrack-icon.png" />
+        <link rel="canonical" href="/privacy" />
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">
