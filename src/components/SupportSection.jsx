@@ -69,10 +69,11 @@ const SupportSection = () => {
     try {
       // 1. Call Edge Function to send email
       const { data: emailData, error: functionError } = await supabase.functions.invoke('send-contact-email', {
-        body: { 
-          name: formData.name, 
-          email: formData.email, 
-          message: formData.message 
+        body: {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
         }
       });
 
@@ -88,7 +89,8 @@ const SupportSection = () => {
             email: formData.email,
             subject: formData.subject,
             message: formData.message,
-            user_id: user ? user.id : null
+            user_id: user ? user.id : null,
+            ticket_number: emailData.ticketNumber
           }
         ]);
 
