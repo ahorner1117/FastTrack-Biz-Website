@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, LogOut, User as UserIcon } from 'lucide-react';
+import { Menu, X, LogOut, ChevronDown, Gauge, Car, Users, Crown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import AuthModal from './AuthModal';
@@ -10,9 +10,27 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isFeaturesDropdownOpen, setIsFeaturesDropdownOpen] = useState(false);
+  const [isMobileFeaturesOpen, setIsMobileFeaturesOpen] = useState(false);
   const { user, signOut } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+  const dropdownTimeoutRef = useRef(null);
+
+  const featurePages = [
+    { label: 'Precision Timing', to: '/timing', icon: <Gauge size={15} /> },
+    { label: 'Vehicle Garage', to: '/garage', icon: <Car size={15} /> },
+    { label: 'Community', to: '/community', icon: <Users size={15} /> },
+    { label: 'Leaderboards', to: '/leaderboards', icon: <Crown size={15} /> },
+  ];
+
+  const openDropdown = () => {
+    clearTimeout(dropdownTimeoutRef.current);
+    setIsFeaturesDropdownOpen(true);
+  };
+  const closeDropdown = () => {
+    dropdownTimeoutRef.current = setTimeout(() => setIsFeaturesDropdownOpen(false), 120);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,14 +99,57 @@ const Header = () => {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-gray-300 hover:text-[#00FF7F] transition-colors font-medium relative group"
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00FF7F] group-hover:w-full transition-all duration-300 shadow-[0_0_8px_#00FF7F]" />
-                </button>
+                item.href === 'features' ? (
+                  <div
+                    key="features"
+                    className="relative"
+                    onMouseEnter={openDropdown}
+                    onMouseLeave={closeDropdown}
+                  >
+                    <button
+                      onClick={() => scrollToSection('features')}
+                      className="flex items-center gap-1 text-gray-300 hover:text-[#00FF7F] transition-colors font-medium relative group"
+                    >
+                      Features
+                      <ChevronDown size={14} className={`transition-transform duration-200 ${isFeaturesDropdownOpen ? 'rotate-180' : ''}`} />
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00FF7F] group-hover:w-full transition-all duration-300 shadow-[0_0_8px_#00FF7F]" />
+                    </button>
+                    <AnimatePresence>
+                      {isFeaturesDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 6 }}
+                          transition={{ duration: 0.15 }}
+                          onMouseEnter={openDropdown}
+                          onMouseLeave={closeDropdown}
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 bg-[#1a1a1a] border border-[#00FF7F]/20 rounded-xl shadow-[0_0_20px_rgba(0,255,127,0.1)] overflow-hidden z-50"
+                        >
+                          {featurePages.map(({ label, to, icon }) => (
+                            <Link
+                              key={to}
+                              to={to}
+                              onClick={() => { setIsFeaturesDropdownOpen(false); trackEvent('nav_click', { nav_item: to }); }}
+                              className="flex items-center gap-3 px-4 py-3 text-gray-300 hover:text-[#00FF7F] hover:bg-[#00FF7F]/5 transition-colors text-sm font-medium border-b border-[#2a2a2a] last:border-0"
+                            >
+                              <span className="text-[#00FF7F]">{icon}</span>
+                              {label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <button
+                    key={item.href}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-gray-300 hover:text-[#00FF7F] transition-colors font-medium relative group"
+                  >
+                    {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#00FF7F] group-hover:w-full transition-all duration-300 shadow-[0_0_8px_#00FF7F]" />
+                  </button>
+                )
               ))}
 
               <div className="pl-4 border-l border-gray-700 ml-4">
@@ -143,14 +204,49 @@ const Header = () => {
             <div className="absolute inset-0 bg-[#1a1a1a]/98 backdrop-blur-md border-l border-[#00FF7F]/20">
               <nav className="flex flex-col items-center justify-center h-full gap-8">
                 {navItems.map((item) => (
-                  <button
-                    key={item.href}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-2xl text-gray-300 hover:text-[#00FF7F] transition-colors font-medium"
-                    style={{ textShadow: '0 0 10px #00FF7F' }}
-                  >
-                    {item.label}
-                  </button>
+                  item.href === 'features' ? (
+                    <div key="features" className="flex flex-col items-center gap-3">
+                      <button
+                        onClick={() => setIsMobileFeaturesOpen(v => !v)}
+                        className="flex items-center gap-2 text-2xl text-gray-300 hover:text-[#00FF7F] transition-colors font-medium"
+                        style={{ textShadow: '0 0 10px #00FF7F' }}
+                      >
+                        Features
+                        <ChevronDown size={20} className={`transition-transform duration-200 ${isMobileFeaturesOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      <AnimatePresence>
+                        {isMobileFeaturesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="flex flex-col items-center gap-2 overflow-hidden"
+                          >
+                            {featurePages.map(({ label, to, icon }) => (
+                              <Link
+                                key={to}
+                                to={to}
+                                onClick={() => { setIsMobileMenuOpen(false); setIsMobileFeaturesOpen(false); trackEvent('nav_click', { nav_item: to }); }}
+                                className="flex items-center gap-2 text-lg text-[#00FF7F] hover:text-[#00D9FF] transition-colors font-medium"
+                              >
+                                {icon}{label}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <button
+                      key={item.href}
+                      onClick={() => scrollToSection(item.href)}
+                      className="text-2xl text-gray-300 hover:text-[#00FF7F] transition-colors font-medium"
+                      style={{ textShadow: '0 0 10px #00FF7F' }}
+                    >
+                      {item.label}
+                    </button>
+                  )
                 ))}
                 
                 <div className="w-16 h-0.5 bg-gray-700 my-4" />
