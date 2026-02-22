@@ -17,6 +17,38 @@ const Footer = () => {
         {/* Links */}
         <div className="flex flex-wrap justify-center gap-6 mb-8">
           <Link
+            to="/timing"
+            className="text-[#00FF7F] hover:text-[#00D9FF] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
+            onClick={() => trackEvent('footer_link_click', { link: 'timing' })}
+          >
+            Precision Timing
+          </Link>
+          <span className="text-[#3a3a3a]">•</span>
+          <Link
+            to="/garage"
+            className="text-[#00FF7F] hover:text-[#00D9FF] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
+            onClick={() => trackEvent('footer_link_click', { link: 'garage' })}
+          >
+            Vehicle Garage
+          </Link>
+          <span className="text-[#3a3a3a]">•</span>
+          <Link
+            to="/community"
+            className="text-[#00FF7F] hover:text-[#00D9FF] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
+            onClick={() => trackEvent('footer_link_click', { link: 'community' })}
+          >
+            Community
+          </Link>
+          <span className="text-[#3a3a3a]">•</span>
+          <Link
+            to="/leaderboards"
+            className="text-[#00FF7F] hover:text-[#00D9FF] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
+            onClick={() => trackEvent('footer_link_click', { link: 'leaderboards' })}
+          >
+            Leaderboards
+          </Link>
+          <span className="text-[#3a3a3a]">•</span>
+          <Link
             to="/privacy"
             className="text-[#00FF7F] hover:text-[#00FF7F] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
             onClick={() => trackEvent('footer_link_click', { link: 'privacy_policy' })}

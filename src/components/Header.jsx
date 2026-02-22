@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, LogOut, User as UserIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
@@ -10,6 +11,8 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const { user, signOut } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,9 +24,18 @@ const Header = () => {
 
   const scrollToSection = (sectionId) => {
     trackEvent('nav_click', { nav_item: sectionId });
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (location.pathname === '/') {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        setIsMobileMenuOpen(false);
+      }
+    } else {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
       setIsMobileMenuOpen(false);
     }
   };
@@ -53,8 +65,8 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <button
-              onClick={() => scrollToSection('hero')}
+            <Link
+              to="/"
               className="flex items-center gap-2 text-2xl font-bold text-white hover:text-[#00FF7F] transition-colors"
               style={{ textShadow: '0 0 10px #00FF7F' }}
             >
@@ -64,7 +76,7 @@ const Header = () => {
                 className="w-8 h-8 rounded-lg"
               />
               FastTrack
-            </button>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
