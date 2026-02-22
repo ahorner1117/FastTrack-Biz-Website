@@ -196,11 +196,11 @@ const TermsOfServicePage = () => {
             <Section title="Contact Information" delay={0.55}>
               <p>FastTrack Rides, Inc.</p>
               <a
-                href="mailto:support@fasttrackrides.com"
+                href="mailto:support@fasttrackapp.biz"
                 className="inline-flex items-center gap-2 text-[#00FF7F] hover:text-[#00D9FF] transition-colors"
               >
                 <Mail size={16} />
-                support@fasttrackrides.com
+                support@fasttrackapp.biz
               </a>
             </Section>
 

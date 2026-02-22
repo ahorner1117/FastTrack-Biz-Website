@@ -206,11 +206,11 @@ const PrivacyPolicyPage = () => {
               <div className="mt-2">
                 <p>FastTrack Rides, Inc.</p>
                 <a
-                  href="mailto:support@fasttrackrides.com"
+                  href="mailto:support@fasttrackapp.biz"
                   className="inline-flex items-center gap-2 text-[#00FF7F] hover:text-[#00D9FF] transition-colors"
                 >
                   <Mail size={16} />
-                  support@fasttrackrides.com
+                  support@fasttrackapp.biz
                 </a>
               </div>
             </Section>
