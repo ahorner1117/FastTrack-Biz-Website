@@ -10,3 +10,5 @@ dist
 # Supabase local dev
 .supabase/
 supabase/.temp/
+
+docs/*
