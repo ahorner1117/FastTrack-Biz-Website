@@ -4,6 +4,7 @@ import { Mail, Send, Loader2 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
+import { trackEvent } from '@/lib/analytics';
 
 const SupportSection = () => {
   const { user } = useAuth();
@@ -99,6 +100,8 @@ const SupportSection = () => {
         console.error('Failed to save to database:', dbError);
       }
 
+      trackEvent('form_submit', { form_name: 'support_contact', ticket_number: emailData.ticketNumber });
+
       toast({
         title: 'Email sent successfully!',
         description: `Your ticket number is: ${emailData.ticketNumber}`,
@@ -159,6 +162,7 @@ const SupportSection = () => {
               <a
                 href="mailto:support@fasttrackapp.biz"
                 className="text-lg hover:text-[#00FF7F] transition-colors"
+                onClick={() => trackEvent('email_click', { email: 'support@fasttrackapp.biz' })}
               >
                 support@fasttrackapp.biz
               </a>

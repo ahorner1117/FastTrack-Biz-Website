@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Twitter, Instagram, Facebook } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 const Footer = () => {
   const scrollToSection = (sectionId) => {
@@ -18,6 +19,7 @@ const Footer = () => {
           <Link
             to="/privacy"
             className="text-[#00FF7F] hover:text-[#00FF7F] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
+            onClick={() => trackEvent('footer_link_click', { link: 'privacy_policy' })}
           >
             Privacy Policy
           </Link>
@@ -25,6 +27,7 @@ const Footer = () => {
           <Link
             to="/terms"
             className="text-[#00FF7F] hover:text-[#00FF7F] transition-colors drop-shadow-[0_0_5px_rgba(0,255,127,0.4)]"
+            onClick={() => trackEvent('footer_link_click', { link: 'terms_of_service' })}
           >
             Terms of Service
           </Link>
@@ -44,6 +47,7 @@ const Footer = () => {
             href="#"
             className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
             aria-label="Twitter"
+            onClick={() => trackEvent('social_click', { platform: 'twitter' })}
           >
             <Twitter size={24} />
           </a>
@@ -51,6 +55,7 @@ const Footer = () => {
             href="#"
             className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
             aria-label="Instagram"
+            onClick={() => trackEvent('social_click', { platform: 'instagram' })}
           >
             <Instagram size={24} />
           </a>
@@ -58,6 +63,7 @@ const Footer = () => {
             href="#"
             className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
             aria-label="Facebook"
+            onClick={() => trackEvent('social_click', { platform: 'facebook' })}
           >
             <Facebook size={24} />
           </a>

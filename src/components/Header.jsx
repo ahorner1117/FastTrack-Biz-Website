@@ -3,6 +3,7 @@ import { Menu, X, LogOut, User as UserIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import AuthModal from './AuthModal';
+import { trackEvent } from '@/lib/analytics';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,6 +20,7 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
+    trackEvent('nav_click', { nav_item: sectionId });
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -27,6 +29,7 @@ const Header = () => {
   };
 
   const handleSignOut = async () => {
+    trackEvent('auth_action', { action: 'sign_out' });
     await signOut();
     setIsMobileMenuOpen(false);
   };
@@ -92,7 +95,10 @@ const Header = () => {
                   </div>
                 ) : (
                   <button
-                    onClick={() => setIsAuthModalOpen(true)}
+                    onClick={() => {
+                      trackEvent('auth_action', { action: 'sign_in_open' });
+                      setIsAuthModalOpen(true);
+                    }}
                     className="text-[#00FF7F] hover:text-[#00D9FF] font-bold border border-[#00FF7F] hover:border-[#00D9FF] px-4 py-1.5 rounded-lg transition-all duration-300 shadow-[0_0_10px_rgba(0,255,127,0.2)] hover:shadow-[0_0_15px_rgba(0,255,127,0.4)]"
                   >
                     Sign In

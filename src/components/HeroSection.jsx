@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 const HeroSection = () => {
   const scrollToFeatures = () => {
+    trackEvent('cta_click', { cta_text: 'Get Started', cta_location: 'hero' });
     const element = document.getElementById('features');
     if (element) {
       element.scrollIntoView({

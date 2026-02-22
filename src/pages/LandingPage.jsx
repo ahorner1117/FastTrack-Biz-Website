@@ -48,6 +48,38 @@ const LandingPage = () => {
             }
           }
         `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Why does FastTrack need location access?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "FastTrack uses GPS to measure your speed and distance with precision. Location data is only collected during active timing sessions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my data private?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Your run data is stored securely. Shared runs are only visible to friends you add."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "The app shows poor GPS accuracy. What should I do?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ensure you're outdoors with a clear view of the sky. GPS accuracy improves after a few seconds of signal acquisition."
+                }
+              }
+            ]
+          }
+        `}</script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">
