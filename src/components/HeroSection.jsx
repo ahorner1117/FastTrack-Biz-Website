@@ -48,7 +48,7 @@ const HeroSection = () => {
         duration: 0.8,
         delay: 0.4
       }} className="-mb-12">
-        <img src="/images/Fasttrack-horizontal-logo.png" alt="Fasttrack" className="h-40 sm:h-60 mx-auto" />
+        <img src="/images/fasttrack-horiontal-logo.png" alt="Fasttrack" className="h-40 sm:h-52 mx-auto mb-12" />
       </motion.div>
 
       <motion.h2 initial={{
