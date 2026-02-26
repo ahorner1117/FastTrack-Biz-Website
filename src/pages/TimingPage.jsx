@@ -106,6 +106,28 @@ const TimingPage = () => {
             </p>
           </motion.div>
 
+          {/* App Screenshots */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center gap-4 sm:gap-8 mb-20"
+          >
+            <img
+              src="/images/acceleration-timer.png"
+              alt="FastTrack acceleration timer screen"
+              className="h-[320px] sm:h-[520px] rounded-[2rem] border-2 border-[#2a2a2a]"
+              style={{ boxShadow: '0 0 40px rgba(0, 255, 127, 0.15)' }}
+            />
+            <img
+              src="/images/track-drive-timer.png"
+              alt="FastTrack drive mode timer screen"
+              className="h-[320px] sm:h-[520px] rounded-[2rem] border-2 border-[#2a2a2a]"
+              style={{ boxShadow: '0 0 40px rgba(0, 255, 127, 0.15)' }}
+            />
+          </motion.div>
+
           {/* Timing Metrics Grid */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

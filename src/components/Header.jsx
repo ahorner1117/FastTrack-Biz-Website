@@ -74,11 +74,10 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[#0a0a0a]/95 backdrop-blur-md shadow-lg border-b border-[#00FF7F]/20'
-            : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'bg-[#0a0a0a]/95 backdrop-blur-md shadow-lg border-b border-[#00FF7F]/20'
+          : 'bg-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex items-center justify-between h-16">
@@ -89,11 +88,11 @@ const Header = () => {
               style={{ textShadow: '0 0 10px #00FF7F' }}
             >
               <img
-                src="/images/fasttrack-icon.png"
+                src="/images/fasttrack-horiontal-logo.png"
                 alt="FastTrack"
-                className="w-8 h-8 rounded-lg"
+                className="h-16 w-auto rounded-lg"
               />
-              FastTrack
+
             </Link>
 
             {/* Desktop Navigation */}
@@ -248,9 +247,9 @@ const Header = () => {
                     </button>
                   )
                 ))}
-                
+
                 <div className="w-16 h-0.5 bg-gray-700 my-4" />
-                
+
                 {user ? (
                   <div className="flex flex-col items-center gap-4">
                     <span className="text-white font-medium text-lg">
