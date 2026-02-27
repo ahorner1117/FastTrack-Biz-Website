@@ -21,7 +21,6 @@ const HeroSection = () => {
 
     {/* Content */}
     <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-8 text-center">
-      <h1 className="sr-only">Fasttrack</h1>
       <motion.div initial={{
         opacity: 0,
         y: 30
@@ -48,10 +47,10 @@ const HeroSection = () => {
         duration: 0.8,
         delay: 0.4
       }} className="mb-4">
-        <img src="/images/fasttrack-horiontal-logo.png" alt="Fasttrack" className="h-32 sm:h-44 mx-auto" />
+        <img src="/images/fasttrack-horiontal-logo.png" alt="FastTrack" className="h-32 sm:h-44 mx-auto" />
       </motion.div>
 
-      <motion.h2 initial={{
+      <motion.h1 initial={{
         opacity: 0,
         y: 30
       }} animate={{
@@ -62,7 +61,7 @@ const HeroSection = () => {
         delay: 0.6
       }} className="text-4xl sm:text-6xl font-bold text-white mb-6 neon-text-green leading-tight">
         Precision Acceleration <br /> Timer for iOS
-      </motion.h2>
+      </motion.h1>
 
       <motion.p initial={{
         opacity: 0,

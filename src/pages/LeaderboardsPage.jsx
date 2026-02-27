@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Crown, Globe, Users, Flag, TrendingUp, Car, Zap, Download } from 'lucide-react';
@@ -57,17 +57,51 @@ const LeaderboardsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Leaderboards &amp; Rankings | FastTrack</title>
-        <meta name="description" content="Compete against vehicle enthusiasts worldwide or challenge your friends. See where your runs rank on FastTrack's global and friends leaderboards." />
-        <meta property="og:title" content="Leaderboards & Rankings | FastTrack" />
-        <meta property="og:description" content="Compete against vehicle enthusiasts worldwide or challenge your friends. See where your runs rank on FastTrack's global and friends leaderboards." />
+        <title>Car Performance Leaderboards &amp; Rankings | FastTrack App</title>
+        <meta name="description" content="Compete against car enthusiasts worldwide. See where your 0-60, quarter-mile, and half-mile runs rank on FastTrack's global leaderboards." />
+        <meta property="og:title" content="Car Performance Leaderboards & Rankings | FastTrack App" />
+        <meta property="og:description" content="Compete against car enthusiasts worldwide. See where your 0-60, quarter-mile, and half-mile runs rank on FastTrack's global leaderboards." />
         <meta property="og:url" content="https://fasttrackapp.biz/leaderboards" />
         <meta property="og:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Leaderboards & Rankings | FastTrack" />
-        <meta name="twitter:description" content="Compete against vehicle enthusiasts worldwide or challenge your friends. See where your runs rank on FastTrack's global and friends leaderboards." />
+        <meta name="twitter:title" content="Car Performance Leaderboards & Rankings | FastTrack App" />
+        <meta name="twitter:description" content="Compete against car enthusiasts worldwide. See where your 0-60, quarter-mile, and half-mile runs rank on FastTrack's global leaderboards." />
         <meta name="twitter:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <link rel="canonical" href="https://fasttrackapp.biz/leaderboards" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Car Performance Leaderboards & Rankings",
+            "description": "Compete against car enthusiasts worldwide on FastTrack's global leaderboards for 0-60, quarter-mile, and half-mile.",
+            "url": "https://fasttrackapp.biz/leaderboards",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "FastTrack",
+              "url": "https://fasttrackapp.biz"
+            }
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://fasttrackapp.biz/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Leaderboards",
+                "item": "https://fasttrackapp.biz/leaderboards"
+              }
+            ]
+          }
+        `}</script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">

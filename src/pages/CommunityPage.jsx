@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Users, Share2, Globe, UserPlus, Heart, Lock, Bell, Download } from 'lucide-react';
@@ -59,17 +59,51 @@ const CommunityPage = () => {
   return (
     <>
       <Helmet>
-        <title>Community &amp; Social Sharing | FastTrack</title>
-        <meta name="description" content="Share your best runs, connect with fellow enthusiasts, and build your crew on FastTrack's social platform for vehicle performance." />
-        <meta property="og:title" content="Community & Social Sharing | FastTrack" />
-        <meta property="og:description" content="Share your best runs, connect with fellow enthusiasts, and build your crew on FastTrack's social platform for vehicle performance." />
+        <title>Car Community &amp; Social Platform | FastTrack App</title>
+        <meta name="description" content="Share your best runs, connect with fellow car enthusiasts, join vehicle groups, and build your crew on FastTrack's social platform." />
+        <meta property="og:title" content="Car Community & Social Platform | FastTrack App" />
+        <meta property="og:description" content="Share your best runs, connect with fellow car enthusiasts, join vehicle groups, and build your crew on FastTrack's social platform." />
         <meta property="og:url" content="https://fasttrackapp.biz/community" />
         <meta property="og:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Community & Social Sharing | FastTrack" />
-        <meta name="twitter:description" content="Share your best runs, connect with fellow enthusiasts, and build your crew on FastTrack's social platform for vehicle performance." />
+        <meta name="twitter:title" content="Car Community & Social Platform | FastTrack App" />
+        <meta name="twitter:description" content="Share your best runs, connect with fellow car enthusiasts, join vehicle groups, and build your crew on FastTrack's social platform." />
         <meta name="twitter:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <link rel="canonical" href="https://fasttrackapp.biz/community" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Car Community & Social Platform",
+            "description": "Share your best runs, connect with fellow car enthusiasts, and build your crew on FastTrack's social platform.",
+            "url": "https://fasttrackapp.biz/community",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "FastTrack",
+              "url": "https://fasttrackapp.biz"
+            }
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://fasttrackapp.biz/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Community",
+                "item": "https://fasttrackapp.biz/community"
+              }
+            ]
+          }
+        `}</script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">

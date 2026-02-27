@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Gauge, Flag, Map, Zap, TrendingUp, Settings2, Download } from 'lucide-react';
@@ -51,17 +51,51 @@ const TimingPage = () => {
   return (
     <>
       <Helmet>
-        <title>Precision GPS Timing | FastTrack</title>
-        <meta name="description" content="Measure your 0-60, quarter-mile, and top speed with millisecond accuracy using FastTrack's GPS timing technology." />
-        <meta property="og:title" content="Precision GPS Timing | FastTrack" />
-        <meta property="og:description" content="Measure your 0-60, quarter-mile, and top speed with millisecond accuracy using FastTrack's GPS timing technology." />
+        <title>0-60 Timer &amp; Quarter Mile GPS Timing | FastTrack App</title>
+        <meta name="description" content="Measure 0-60 mph, 0-100 mph, quarter-mile, and half-mile with millisecond accuracy. Professional-grade GPS timing rivaling Dragy and RaceBox." />
+        <meta property="og:title" content="0-60 Timer & Quarter Mile GPS Timing | FastTrack App" />
+        <meta property="og:description" content="Measure 0-60 mph, 0-100 mph, quarter-mile, and half-mile with millisecond accuracy. Professional-grade GPS timing rivaling Dragy and RaceBox." />
         <meta property="og:url" content="https://fasttrackapp.biz/timing" />
         <meta property="og:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Precision GPS Timing | FastTrack" />
-        <meta name="twitter:description" content="Measure your 0-60, quarter-mile, and top speed with millisecond accuracy using FastTrack's GPS timing technology." />
+        <meta name="twitter:title" content="0-60 Timer & Quarter Mile GPS Timing | FastTrack App" />
+        <meta name="twitter:description" content="Measure 0-60 mph, 0-100 mph, quarter-mile, and half-mile with millisecond accuracy. Professional-grade GPS timing rivaling Dragy and RaceBox." />
         <meta name="twitter:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <link rel="canonical" href="https://fasttrackapp.biz/timing" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "0-60 Timer & Quarter Mile GPS Timing",
+            "description": "Measure 0-60 mph, 0-100 mph, quarter-mile, and half-mile with millisecond accuracy using FastTrack's GPS timing.",
+            "url": "https://fasttrackapp.biz/timing",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "FastTrack",
+              "url": "https://fasttrackapp.biz"
+            }
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://fasttrackapp.biz/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Precision Timing",
+                "item": "https://fasttrackapp.biz/timing"
+              }
+            ]
+          }
+        `}</script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">

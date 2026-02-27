@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Mail, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -46,6 +46,20 @@ const PrivacyPolicyPage = () => {
         <meta name="twitter:description" content="Privacy Policy for FastTrack Rides. Learn how we collect, use, and protect your personal data." />
         <meta name="twitter:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <link rel="canonical" href="https://fasttrackapp.biz/privacy" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Privacy Policy",
+            "description": "Privacy Policy for FastTrack Rides. Learn how we collect, use, and protect your personal data.",
+            "url": "https://fasttrackapp.biz/privacy",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "FastTrack",
+              "url": "https://fasttrackapp.biz"
+            }
+          }
+        `}</script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">

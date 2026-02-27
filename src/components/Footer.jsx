@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Twitter, Instagram, Facebook } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { trackEvent } from '@/lib/analytics';
 
 const Footer = () => {
@@ -76,28 +76,12 @@ const Footer = () => {
         {/* Social Media Links */}
         <div className="flex justify-center gap-6 mb-8">
           <a
-            href="#"
-            className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
-            aria-label="Twitter"
-            onClick={() => trackEvent('social_click', { platform: 'twitter' })}
-          >
-            <Twitter size={24} />
-          </a>
-          <a
             href="https://www.instagram.com/fasttrack.app"
             className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
             aria-label="Instagram"
             onClick={() => trackEvent('social_click', { platform: 'instagram' })}
           >
             <Instagram size={24} />
-          </a>
-          <a
-            href="#"
-            className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
-            aria-label="Facebook"
-            onClick={() => trackEvent('social_click', { platform: 'facebook' })}
-          >
-            <Facebook size={24} />
           </a>
         </div>
 

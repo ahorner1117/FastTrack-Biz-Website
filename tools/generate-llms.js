@@ -119,12 +119,15 @@ function generateFallbackUrl(fileName) {
   return cleanName === 'app' ? '/' : `/${cleanName}`;
 }
 
+const BASE_URL = 'https://fasttrackapp.biz';
+
 function generateLlmsTxt(pages) {
   const sortedPages = pages.sort((a, b) => a.title.localeCompare(b.title));
-  const pageEntries = sortedPages.map(page => 
-    `- [${page.title}](${page.url}): ${page.description}`
-  ).join('\n');
-  
+  const pageEntries = sortedPages.map(page => {
+    const absoluteUrl = page.url.startsWith('http') ? page.url : `${BASE_URL}${page.url}`;
+    return `- [${page.title}](${absoluteUrl}): ${page.description}`;
+  }).join('\n');
+
   return `## Pages\n${pageEntries}`;
 }
 
@@ -175,7 +178,9 @@ function main() {
   fs.writeFileSync(outputPath, llmsTxtContent, 'utf8');
 }
 
-const isMainModule = import.meta.url === `file://${process.argv[1]}`;
+const scriptPath = process.argv[1];
+const isMainModule = import.meta.url === `file://${scriptPath}` ||
+  import.meta.url === new URL(`file://${path.resolve(scriptPath)}`).href;
 
 if (isMainModule) {
   main();

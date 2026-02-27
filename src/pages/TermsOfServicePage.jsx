@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Mail, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -46,6 +46,20 @@ const TermsOfServicePage = () => {
         <meta name="twitter:description" content="Terms of Service for FastTrack Rides, the precision GPS acceleration timer app for iOS." />
         <meta name="twitter:image" content="https://fasttrackapp.biz/images/fasttrack-icon.png" />
         <link rel="canonical" href="https://fasttrackapp.biz/terms" />
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Terms of Service",
+            "description": "Terms of Service for FastTrack Rides, the GPS acceleration timer app for iOS.",
+            "url": "https://fasttrackapp.biz/terms",
+            "isPartOf": {
+              "@type": "WebSite",
+              "name": "FastTrack",
+              "url": "https://fasttrackapp.biz"
+            }
+          }
+        `}</script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0a0a0a]">

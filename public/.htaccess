@@ -7,7 +7,10 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set X-Powered-By "Hostinger Horizons"
+  # Security headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
 
   # Never CDN-cache index.html — must be fresh after every deployment
   <If "%{REQUEST_URI} =~ m#^(/index\.html)?$#">
