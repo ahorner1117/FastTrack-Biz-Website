@@ -26,9 +26,9 @@ const FeatureCard = ({ icon, title, description, delay = 0 }) => (
 );
 
 const MOD_CATEGORIES = [
-  'Exhaust', 'Tune', 'Downpipes', 'Cold Air Intake', 'Intercooler',
-  'Turbo/Supercharger', 'Headers', 'Suspension', 'Wheels & Tires',
-  'Weight Reduction', 'Nitrous', 'Fuel System',
+  'Engine', 'Forced Induction', 'Fuel & Ignition', 'Cooling', 'Drivetrain',
+  'Suspension & Chassis', 'Wheels, Tires & Brakes', 'Aero & Exterior',
+  'Interior & Weight', 'Electronics',
 ];
 
 const CrossLinks = () => (
@@ -160,7 +160,7 @@ const GaragePage = () => {
             transition={{ duration: 0.5 }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-white text-center mb-2">12 Upgrade Categories</h2>
+            <h2 className="text-3xl font-bold text-white text-center mb-2">75+ Mods Across 10 Categories</h2>
             <p className="text-gray-400 text-center mb-10">Organize every modification by type so your build history stays clear.</p>
             <div className="flex flex-wrap justify-center gap-3">
               {MOD_CATEGORIES.map((cat, i) => (

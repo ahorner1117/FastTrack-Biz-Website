@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Terms Text */}
         <div className="bg-[#1a1a1a] backdrop-blur-md p-6 rounded-xl border border-[#00FF7F]/10 mb-8" style={{ boxShadow: '0 0 15px rgba(0, 255, 127, 0.2)' }}>
           <p className="text-gray-300 text-center leading-relaxed">
-            By using FastTrack, you agree to use the app responsibly and in compliance with local traffic laws. 
+            By using FastTrack, you agree to use the app responsibly and in compliance with local traffic laws.
             Always prioritize safety—never operate your device while driving.
           </p>
         </div>
@@ -84,7 +84,7 @@ const Footer = () => {
             <Twitter size={24} />
           </a>
           <a
-            href="#"
+            href="https://www.instagram.com/fasttrack.app"
             className="text-[#00FF7F] hover:text-white transition-colors transform hover:scale-110 duration-300 drop-shadow-[0_0_5px_rgba(0,255,127,0.6)]"
             aria-label="Instagram"
             onClick={() => trackEvent('social_click', { platform: 'instagram' })}
