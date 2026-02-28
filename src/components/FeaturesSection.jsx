@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Gauge, Flag, Map, Car, Trophy, ArrowRight } from 'lucide-react';
+import { Gauge, Flag, Map, Car, Trophy, UsersRound, ArrowRight } from 'lucide-react';
 
 const FeaturesSection = () => {
   const features = [
@@ -34,6 +34,12 @@ const FeaturesSection = () => {
       title: 'Social sharing & leaderboards',
       description: 'Share your best runs with friends and compete on global leaderboards.',
       to: '/leaderboards',
+    },
+    {
+      icon: <UsersRound className="w-12 h-12" />,
+      title: 'Vehicle groups & forums',
+      description: 'Join auto-generated groups for your vehicle or create custom communities for meetups and builds.',
+      to: '/groups',
     }
   ];
 

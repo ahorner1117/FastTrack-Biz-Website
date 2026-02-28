@@ -5,25 +5,8 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Gauge, Flag, Map, Zap, TrendingUp, Settings2, Download } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ExpandableFeatureCard from '@/components/ExpandableFeatureCard';
 import { trackEvent } from '@/lib/analytics';
-
-const FeatureCard = ({ icon, title, description, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay }}
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="bg-[#1a1a1a] backdrop-blur-md p-8 rounded-xl border-2 border-[#2a2a2a] hover:border-[#00FF7F] transition-all duration-300"
-    style={{ boxShadow: '0 0 15px rgba(0, 255, 127, 0.1)' }}
-  >
-    <div className="text-[#00FF7F] mb-4 drop-shadow-[0_0_8px_rgba(0,255,127,0.6)]">
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-    <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
-  </motion.div>
-);
 
 const CrossLinks = () => (
   <div className="py-12 border-t border-[#2a2a2a]">
@@ -33,6 +16,7 @@ const CrossLinks = () => (
         { to: '/garage', label: 'Vehicle Garage' },
         { to: '/community', label: 'Community' },
         { to: '/leaderboards', label: 'Leaderboards' },
+        { to: '/groups', label: 'Groups' },
       ].map(({ to, label }) => (
         <Link
           key={to}
@@ -175,14 +159,14 @@ const TimingPage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {[
-              { icon: <Gauge size={36} />, title: '0–60 mph', description: 'The gold standard of performance measurement. Track your personal best with GPS precision.' },
-              { icon: <Flag size={36} />, title: 'Quarter-Mile', description: 'Classic drag strip benchmark. Get trap speed and ET for every pass.' },
-              { icon: <Map size={36} />, title: 'Half-Mile', description: 'See your car stretch its legs — where power and aero define the outcome.' },
-              { icon: <Zap size={36} />, title: '0–100 mph', description: 'Tests where big power builds really shine — beyond the initial launch.' },
-              { icon: <TrendingUp size={36} />, title: 'Top Speed', description: 'Log your highest recorded speed on every session automatically.' },
-              { icon: <Settings2 size={36} />, title: 'Custom Milestones', description: 'Define your own start and end points for any speed range you care about.' },
+              { icon: <Gauge size={36} />, title: '0–60 mph', description: 'The gold standard of performance measurement. Track your personal best with GPS precision.', expandedDescription: 'Uses GPS timestamps (not system clock) for sub-0.1s accuracy. Calculated speed from position deltas with exponential smoothing eliminates GPS noise. Comparable to Dragy and RaceBox hardware.' },
+              { icon: <Flag size={36} />, title: 'Quarter-Mile', description: 'Classic drag strip benchmark. Get trap speed and ET for every pass.', expandedDescription: 'Full drag strip simulation — get elapsed time and trap speed at 1,320 feet. Every run is GPS-verified and saved to your history with the vehicle that ran it.' },
+              { icon: <Map size={36} />, title: 'Half-Mile', description: 'See your car stretch its legs — where power and aero define the outcome.', expandedDescription: 'Half-mile runs capture sustained acceleration performance beyond the initial launch. See where power and aerodynamics truly define the outcome.' },
+              { icon: <Zap size={36} />, title: '0–100 mph', description: 'Tests where big power builds really shine — beyond the initial launch.', expandedDescription: 'The test where big-power builds shine. Measures acceleration through the full power band, beyond the traction-limited launch.' },
+              { icon: <TrendingUp size={36} />, title: 'Top Speed', description: 'Log your highest recorded speed on every session automatically.', expandedDescription: 'Automatically logged on every session. Your highest GPS-verified speed is recorded and saved whether you\'re in acceleration mode or drive mode.' },
+              { icon: <Settings2 size={36} />, title: 'Custom Milestones', description: 'Define your own start and end points for any speed range you care about.', expandedDescription: 'Define your own start and end speed targets. Want 30-80 mph for a roll race? 0-130 for a highway pull? Set any range you care about.' },
             ].map((card, i) => (
-              <FeatureCard key={i} delay={i * 0.08} {...card} />
+              <ExpandableFeatureCard key={i} delay={i * 0.08} {...card} />
             ))}
           </div>
 

@@ -5,25 +5,8 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Car, Camera, Wrench, Trophy, FileText, LayoutGrid, Download } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ExpandableFeatureCard from '@/components/ExpandableFeatureCard';
 import { trackEvent } from '@/lib/analytics';
-
-const FeatureCard = ({ icon, title, description, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay }}
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="bg-[#1a1a1a] backdrop-blur-md p-8 rounded-xl border-2 border-[#2a2a2a] hover:border-[#00FF7F] transition-all duration-300"
-    style={{ boxShadow: '0 0 15px rgba(0, 255, 127, 0.1)' }}
-  >
-    <div className="text-[#00FF7F] mb-4 drop-shadow-[0_0_8px_rgba(0,255,127,0.6)]">
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-    <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
-  </motion.div>
-);
 
 const MOD_CATEGORIES = [
   'Engine', 'Forced Induction', 'Fuel & Ignition', 'Cooling', 'Drivetrain',
@@ -39,6 +22,7 @@ const CrossLinks = () => (
         { to: '/timing', label: 'Precision Timing' },
         { to: '/community', label: 'Community' },
         { to: '/leaderboards', label: 'Leaderboards' },
+        { to: '/groups', label: 'Groups' },
       ].map(({ to, label }) => (
         <Link
           key={to}
@@ -175,14 +159,14 @@ const GaragePage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {[
-              { icon: <Car size={36} />, title: 'Vehicle Profiles', description: 'Store make, model, year, trim, and specs for every car in your collection.' },
-              { icon: <Camera size={36} />, title: 'Photo Gallery', description: 'Attach photos to your vehicle profile and watch your build evolve over time.' },
-              { icon: <Wrench size={36} />, title: 'Mod Tracker', description: 'Log every upgrade with date, notes, and category. Know exactly what state your build is in.' },
-              { icon: <Trophy size={36} />, title: 'Performance Stats', description: 'View all personal bests and run history tied directly to each individual vehicle.' },
-              { icon: <FileText size={36} />, title: 'Build Notes', description: 'Free-form notes for each vehicle — track maintenance, future plans, or dyno results.' },
-              { icon: <LayoutGrid size={36} />, title: 'Multi-Vehicle', description: 'No limits on how many vehicles you add. Switch between them instantly during sessions.' },
+              { icon: <Car size={36} />, title: 'Vehicle Profiles', description: 'Store make, model, year, trim, and specs for every car in your collection.', expandedDescription: 'Store year, make, model, and trim for every car. Use VIN lookup to auto-fill vehicle details. Each vehicle gets its own profile with run history and mod log.' },
+              { icon: <Camera size={36} />, title: 'Photo Gallery', description: 'Attach photos to your vehicle profile and watch your build evolve over time.', expandedDescription: 'Attach photos to your vehicle profile. Document your build\'s evolution over time with dated images. Photos display in a scrollable gallery on your profile.' },
+              { icon: <Wrench size={36} />, title: 'Mod Tracker', description: 'Log every upgrade with date, notes, and category. Know exactly what state your build is in.', expandedDescription: 'Choose from 75+ modifications across 10 categories: engine, forced induction, fuel & ignition, cooling, drivetrain, suspension & chassis, wheels/tires/brakes, aero & exterior, interior & weight, electronics. Each mod logged with date and notes.', expandedImage: '/images/vehicle-upgrades.png' },
+              { icon: <Trophy size={36} />, title: 'Performance Stats', description: 'View all personal bests and run history tied directly to each individual vehicle.', expandedDescription: 'Every run is tied to a specific vehicle. View personal bests, average times, and complete run history per car. See which modifications moved the needle.' },
+              { icon: <FileText size={36} />, title: 'Build Notes', description: 'Free-form notes for each vehicle — track maintenance, future plans, or dyno results.', expandedDescription: 'Free-form notes for maintenance logs, dyno results, future plans, or anything else. Attached directly to each vehicle in your garage.' },
+              { icon: <LayoutGrid size={36} />, title: 'Multi-Vehicle', description: 'No limits on how many vehicles you add. Switch between them instantly during sessions.', expandedDescription: 'Add unlimited vehicles to your garage. Switch between them before any run with a single tap. Each car maintains its own independent history and mod log.', expandedImage: '/images/vehicle-selector.png' },
             ].map((card, i) => (
-              <FeatureCard key={i} delay={i * 0.08} {...card} />
+              <ExpandableFeatureCard key={i} delay={i * 0.08} {...card} />
             ))}
           </div>
 

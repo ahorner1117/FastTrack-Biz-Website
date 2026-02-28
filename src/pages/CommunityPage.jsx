@@ -5,25 +5,8 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Users, Share2, Globe, UserPlus, Heart, Lock, Bell, Download } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ExpandableFeatureCard from '@/components/ExpandableFeatureCard';
 import { trackEvent } from '@/lib/analytics';
-
-const FeatureCard = ({ icon, title, description, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay }}
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="bg-[#1a1a1a] backdrop-blur-md p-8 rounded-xl border-2 border-[#2a2a2a] hover:border-[#00FF7F] transition-all duration-300"
-    style={{ boxShadow: '0 0 15px rgba(0, 255, 127, 0.1)' }}
-  >
-    <div className="text-[#00FF7F] mb-4 drop-shadow-[0_0_8px_rgba(0,255,127,0.6)]">
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-    <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
-  </motion.div>
-);
 
 const POST_STEPS = [
   { num: '1', label: 'Time your run' },
@@ -41,6 +24,7 @@ const CrossLinks = () => (
         { to: '/timing', label: 'Precision Timing' },
         { to: '/garage', label: 'Vehicle Garage' },
         { to: '/leaderboards', label: 'Leaderboards' },
+        { to: '/groups', label: 'Groups' },
       ].map(({ to, label }) => (
         <Link
           key={to}
@@ -177,14 +161,14 @@ const CommunityPage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {[
-              { icon: <Share2 size={36} />, title: 'Post Runs', description: 'Share any completed run to your feed with your vehicle, time, and an optional photo.' },
-              { icon: <Globe size={36} />, title: 'Public Feed', description: 'Browse runs from all public FastTrack users — discover impressive builds from around the world.' },
-              { icon: <UserPlus size={36} />, title: 'Friend System', description: 'Add friends and see their runs in a dedicated friends feed separate from the public stream.' },
-              { icon: <Heart size={36} />, title: 'Likes & Comments', description: 'React to runs and leave comments. Build connections with people who share your passion.' },
-              { icon: <Lock size={36} />, title: 'Privacy Controls', description: 'Every post can be set to public or friends-only. You decide who sees your data.' },
-              { icon: <Bell size={36} />, title: 'Notifications', description: 'Get notified when friends post, when someone likes your run, or when you hit a new personal best.' },
+              { icon: <Share2 size={36} />, title: 'Post Runs', description: 'Share any completed run to your feed with your vehicle, time, and an optional photo.', expandedDescription: 'Share any completed acceleration run or drive session to the community feed. Posts include your vehicle, verified GPS time, and optional photos or videos (up to 7 media items, videos up to 15s).' },
+              { icon: <Globe size={36} />, title: 'Public Feed', description: 'Browse runs from all public FastTrack users — discover impressive builds from around the world.', expandedDescription: 'Browse runs from all public FastTrack users. Discover impressive builds, see what\'s fast in your area, and find new people to follow. Posts sorted by newest or most popular.', expandedImage: '/images/explor.png' },
+              { icon: <UserPlus size={36} />, title: 'Friend System', description: 'Add friends and see their runs in a dedicated friends feed separate from the public stream.', expandedDescription: 'Send and accept friend requests. See a dedicated friends-only feed separate from the public stream. Share posts directly to friends via DM (Instagram-style).', expandedImage: '/images/profile-page-1.png' },
+              { icon: <Heart size={36} />, title: 'Likes & Comments', description: 'React to runs and leave comments. Build connections with people who share your passion.', expandedDescription: 'React to posts with likes and leave threaded comments. Reply to specific comments with nested threads. Like individual comments. Get notified when someone interacts with your content.' },
+              { icon: <Lock size={36} />, title: 'Privacy Controls', description: 'Every post can be set to public or friends-only. You decide who sees your data.', expandedDescription: 'Every post can be public or friends-only. Your garage, profile, and run history visibility are under your control. Private group posts are only visible to members.' },
+              { icon: <Bell size={36} />, title: 'Notifications', description: 'Get notified when friends post, when someone likes your run, or when you hit a new personal best.', expandedDescription: 'Push notifications for friend requests, post likes, comments, @mentions, and group invites. Tap any notification to jump directly to the relevant content. Mark all as read with one tap.' },
             ].map((card, i) => (
-              <FeatureCard key={i} delay={i * 0.08} {...card} />
+              <ExpandableFeatureCard key={i} delay={i * 0.08} {...card} />
             ))}
           </div>
 

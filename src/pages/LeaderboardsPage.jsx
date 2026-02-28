@@ -5,25 +5,8 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Crown, Globe, Users, Flag, TrendingUp, Car, Zap, Download } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ExpandableFeatureCard from '@/components/ExpandableFeatureCard';
 import { trackEvent } from '@/lib/analytics';
-
-const FeatureCard = ({ icon, title, description, delay = 0 }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay }}
-    whileHover={{ scale: 1.05, y: -5 }}
-    className="bg-[#1a1a1a] backdrop-blur-md p-8 rounded-xl border-2 border-[#2a2a2a] hover:border-[#00FF7F] transition-all duration-300"
-    style={{ boxShadow: '0 0 15px rgba(0, 255, 127, 0.1)' }}
-  >
-    <div className="text-[#00FF7F] mb-4 drop-shadow-[0_0_8px_rgba(0,255,127,0.6)]">
-      {icon}
-    </div>
-    <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-    <p className="text-gray-400 leading-relaxed text-sm">{description}</p>
-  </motion.div>
-);
 
 const MOCK_ROWS = [
   { rank: 1, rankColor: '#FFD700', username: 'SpeedDemon_88', vehicle: '2023 BMW M3 Competition', time: '3.41s' },
@@ -39,6 +22,7 @@ const CrossLinks = () => (
         { to: '/timing', label: 'Precision Timing' },
         { to: '/garage', label: 'Vehicle Garage' },
         { to: '/community', label: 'Community' },
+        { to: '/groups', label: 'Groups' },
       ].map(({ to, label }) => (
         <Link
           key={to}
@@ -175,14 +159,14 @@ const LeaderboardsPage = () => {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
             {[
-              { icon: <Globe size={36} />, title: 'Global Board', description: 'Compete against every FastTrack user on earth. The fastest GPS-verified times rise to the top.' },
-              { icon: <Users size={36} />, title: 'Friends Board', description: 'A separate leaderboard for just the people you follow — perfect for friendly rivalry within your crew.' },
-              { icon: <Flag size={36} />, title: 'Four Categories', description: 'Rankings across 0-60 mph, 0-100 mph, quarter-mile, and half-mile — each category tracked separately.' },
-              { icon: <TrendingUp size={36} />, title: 'Personal Rank', description: 'See your current rank in every category instantly, and track how your position changes over time.' },
-              { icon: <Car size={36} />, title: 'Vehicle Credited', description: 'Every leaderboard entry shows the vehicle that ran the time, so comparisons are always in context.' },
-              { icon: <Zap size={36} />, title: 'Live Updates', description: 'Rankings update in real time as new runs are submitted. Beat a time and move up immediately.' },
+              { icon: <Globe size={36} />, title: 'Global Board', description: 'Compete against every FastTrack user on earth. The fastest GPS-verified times rise to the top.', expandedDescription: 'Every FastTrack user competes on the same board. Rankings are based on GPS-verified times only — no manual entries, no estimates. The fastest verified time wins.' },
+              { icon: <Users size={36} />, title: 'Friends Board', description: 'A separate leaderboard for just the people you follow — perfect for friendly rivalry within your crew.', expandedDescription: 'A separate leaderboard showing only your friends. Perfect for friendly rivalry within your crew without competing against the entire world.' },
+              { icon: <Flag size={36} />, title: 'Four Categories', description: 'Rankings across 0-60 mph, 0-100 mph, quarter-mile, and half-mile — each category tracked separately.', expandedDescription: 'Separate rankings for 0-60 mph, 0-100 mph, quarter-mile, and half-mile. Each category tracked independently so your ranking reflects your best effort in each discipline.' },
+              { icon: <TrendingUp size={36} />, title: 'Personal Rank', description: 'See your current rank in every category instantly, and track how your position changes over time.', expandedDescription: 'See your current position in every category at a glance. Track how your rank changes as you improve and as new competitors join.' },
+              { icon: <Car size={36} />, title: 'Vehicle Credited', description: 'Every leaderboard entry shows the vehicle that ran the time, so comparisons are always in context.', expandedDescription: 'Every leaderboard entry displays the vehicle that recorded the time. Compare apples to apples — see how your car stacks up against the same make/model.' },
+              { icon: <Zap size={36} />, title: 'Live Updates', description: 'Rankings update in real time as new runs are submitted. Beat a time and move up immediately.', expandedDescription: 'Rankings update as new runs are submitted. Beat a time and watch your position move up immediately. No waiting for batch updates or manual verification.' },
             ].map((card, i) => (
-              <FeatureCard key={i} delay={i * 0.08} {...card} />
+              <ExpandableFeatureCard key={i} delay={i * 0.08} {...card} />
             ))}
           </div>
 

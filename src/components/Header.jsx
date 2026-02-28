@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X, LogOut, ChevronDown, Gauge, Car, Users, Crown } from 'lucide-react';
+import { Menu, X, LogOut, ChevronDown, Gauge, Car, Users, Crown, UsersRound } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/contexts/SupabaseAuthContext';
 import AuthModal from './AuthModal';
@@ -22,6 +22,7 @@ const Header = () => {
     { label: 'Vehicle Garage', to: '/garage', icon: <Car size={15} /> },
     { label: 'Community', to: '/community', icon: <Users size={15} /> },
     { label: 'Leaderboards', to: '/leaderboards', icon: <Crown size={15} /> },
+    { label: 'Groups', to: '/groups', icon: <UsersRound size={15} /> },
   ];
 
   const openDropdown = () => {

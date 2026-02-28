@@ -7,3 +7,4 @@
 - [Privacy Policy - FastTrack Rides](https://fasttrackapp.biz/privacypolicy): Privacy Policy for FastTrack Rides. Learn how we collect, use, and protect your personal data and location information.
 - [Terms of Service - FastTrack Rides](https://fasttrackapp.biz/termsofservice): Terms of Service for FastTrack Rides, the precision GPS acceleration timer app for iOS. Read our terms for using the app responsibly.
 - [Vehicle Garage & Mod Tracker | FastTrack App](https://fasttrackapp.biz/garage): Manage your vehicles, document every modification across 75+ mod types, and track performance history for each build in your FastTrack garage.
+- [Vehicle Groups & Forums | FastTrack App](https://fasttrackapp.biz/groups): Join auto-generated vehicle communities, create custom groups for meetups and builds, and share verified GPS runs with threaded discussions on FastTrack.
