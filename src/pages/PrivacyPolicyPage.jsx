@@ -92,7 +92,7 @@ const PrivacyPolicyPage = () => {
               Privacy Policy
             </h1>
             <p className="text-gray-400 text-lg">
-              Effective Date: February 6, 2026 &middot; Last Updated: February 6, 2026
+              Effective Date: February 6, 2026 &middot; Last Updated: February 28, 2026
             </p>
           </motion.div>
 
@@ -140,6 +140,15 @@ const PrivacyPolicyPage = () => {
               <BulletList items={[
                 'Device type, operating system version, and unique device identifiers.',
                 'App usage patterns, feature interactions, and crash/error logs to help us improve the App.',
+              ]} />
+
+              <h3 className="text-lg font-semibold text-white mt-6 mb-2">Website Analytics</h3>
+              <BulletList items={[
+                'IP address, browser type, and device information when you visit our website.',
+                'Referral source (the website or link that brought you to our site) and marketing campaign parameters.',
+                'Pages visited, interactions (clicks, form submissions), and time spent on our website.',
+                'If you are signed in, your browsing activity on our website may be associated with your account to improve your experience.',
+                'We use third-party analytics services including Google Analytics, Google Tag Manager, and Microsoft Clarity (session recording and heatmaps) to understand how visitors use our website.',
               ]} />
             </Section>
 

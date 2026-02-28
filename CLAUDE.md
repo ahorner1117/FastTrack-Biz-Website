@@ -9,7 +9,7 @@ FastTrack is a marketing/support website for an iOS GPS acceleration timer app. 
 ### The iOS App
 
 FastTrack is a GPS-based vehicle acceleration timer with a social platform. Core features marketed on this site:
-- **Timing** — 0-60 mph, 0-100 mph, quarter-mile, and half-mile acceleration runs using GPS + accelerometer launch detection
+- **Timing** — 0-60 mph, 0-100 mph, quarter-mile, and half-mile acceleration runs using GPS + iOS Motion Activity for precise speed/movement detection
 - **Garage** — Vehicle management with make/model/year, VIN lookup, and modification tracking (engine, suspension, exhaust, etc.)
 - **Community** — Social feed with posts, comments, threaded replies, @mentions, groups (auto-generated per vehicle model + custom), and friend messaging
 - **Leaderboards** — Performance rankings filterable by vehicle, distance, and time period
@@ -29,9 +29,11 @@ FastTrack is a GPS-based vehicle acceleration timer with a social platform. Core
 
 **Path alias:** `@` maps to `./src` (configured in both `vite.config.js` and `eslint.config.mjs`)
 
-**Routing:** React Router v7 with `BrowserRouter`. Routes defined in `src/App.jsx`. The `LandingPage` (`/`) uses anchor-scroll navigation to sections (features, faq, support, privacy). Feature sub-pages: `/timing`, `/garage`, `/community`, `/leaderboards`. Also `/terms` and `/privacy` for legal pages.
+**Routing:** React Router v7 with `BrowserRouter`. Routes defined in `src/App.jsx`. The `LandingPage` (`/`) uses anchor-scroll navigation to sections (features, faq, support, privacy). Feature sub-pages: `/timing`, `/garage`, `/community`, `/leaderboards`, `/groups`. Also `/terms` and `/privacy` for legal pages.
 
-**Feature pages:** Each feature page (`src/pages/TimingPage.jsx`, `GaragePage.jsx`, `CommunityPage.jsx`, `LeaderboardsPage.jsx`) showcases a core app feature with app screenshots, feature lists, and consistent layout (Header + Footer). The Header includes a dropdown "Features" menu linking to these sub-pages.
+**Feature pages:** Each feature page (`src/pages/TimingPage.jsx`, `GaragePage.jsx`, `CommunityPage.jsx`, `LeaderboardsPage.jsx`, `GroupsPage.jsx`) showcases a core app feature with app screenshots, feature lists, and consistent layout (Header + Footer). The Header includes a dropdown "Features" menu linking to these sub-pages.
+
+**Feature cards:** All feature pages use the shared `ExpandableFeatureCard` component (`src/components/ExpandableFeatureCard.jsx`). Cards with `expandedDescription` are clickable and expand to show detail text and an optional `expandedImage`. Cards without it render as static (no hover, no click).
 
 **Images:** App screenshots stored in `public/images/` (e.g., `acceleration-timer.png`, `garage-vehicles.png`, `explore-page-and-groups.png`, `leaderboard.png`). Referenced directly in feature page components.
 
@@ -41,14 +43,19 @@ FastTrack is a GPS-based vehicle acceleration timer with a social platform. Core
 
 **Styling conventions:** Dark background (#0a0a0a), neon glow effects via custom utility classes in `src/index.css` (e.g., `neon-text-green`, `neon-box-pink`). Tailwind config extends with CSS variable-based theming (`hsl(var(--primary))` pattern).
 
+**Analytics:** `src/lib/analytics.js` dual-sends events to GTM/GA4 (`window.dataLayer`) and a Supabase edge function (`supabase/functions/track-event/index.ts`). Tracks session ID, UTM params, referrer, and device context. `setAnalyticsUser()`/`clearAnalyticsUser()` link authenticated users. `PageViewTracker` in `App.jsx` fires `page_view` on every route change. Never send PII (email, name) to third-party analytics (Clarity, GA4) — only opaque user IDs.
+
 **Build tooling:** `tools/generate-llms.js` runs before Vite build to extract `<Helmet>` title/description from page components into `public/llms.txt`. The `plugins/` directory contains Hostinger Horizons dev-only Vite plugins (visual editor, selection mode, iframe route restoration) — these are not part of the app's core functionality.
 
 ## Key Conventions
 
-- File extensions: `.jsx` for components, `.js` for utilities/config
+- File extensions: `.jsx` for components, `.js` for utilities/config (within `src/`). Supabase edge functions use `.ts` (Deno runtime)
 - Node version: 20.19.1 (see `.nvmrc`)
 - ESLint focuses on critical runtime errors (`no-undef`, `import/no-self-import`); many stylistic rules are intentionally disabled
 - Pages use `react-helmet` for SEO metadata — this is required for the `generate-llms.js` build step to work
 - Icons come from `lucide-react`
 - The `ScrollToTop` component ensures pages scroll to top on route changes
-- Feature pages follow a consistent structure: Helmet metadata → Header → hero section with gradient → feature grid/cards → app screenshots → CTA → Footer
+- Feature pages follow a consistent structure: Helmet metadata → Header → hero section → app screenshots → feature grid/cards → additional sections → CTA → CrossLinks → Footer
+- FAQ content lives in both `FAQSection.jsx` and as FAQPage JSON-LD schema in `LandingPage.jsx` — these must be kept in sync when editing questions/answers
+- The iOS app source is at `../FastTrack` (sibling directory) — reference its `CLAUDE.md` and codebase for accurate feature details and marketing copy
+- When adding new tracking or data collection, update the privacy policy in `PrivacyPolicyPage.jsx` and its "Last Updated" date

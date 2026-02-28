@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
+import { setAnalyticsUser, clearAnalyticsUser } from '@/lib/analytics';
 
 const AuthContext = createContext(undefined);
 
@@ -12,8 +13,15 @@ export const AuthProvider = ({ children }) => {
 
   const handleSession = useCallback((currentSession) => {
     setSession(currentSession);
-    setUser(currentSession?.user ?? null);
+    const currentUser = currentSession?.user ?? null;
+    setUser(currentUser);
     setLoading(false);
+
+    if (currentUser) {
+      setAnalyticsUser(currentUser.id);
+    } else {
+      clearAnalyticsUser();
+    }
   }, []);
 
   useEffect(() => {

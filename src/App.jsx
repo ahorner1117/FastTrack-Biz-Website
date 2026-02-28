@@ -1,5 +1,5 @@
-import React from 'react';
-import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Route, Routes, BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from './components/ScrollToTop';
 import LandingPage from './pages/LandingPage';
@@ -13,6 +13,17 @@ import GroupsPage from './pages/GroupsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/contexts/SupabaseAuthContext';
+import { trackEvent } from '@/lib/analytics';
+
+const PageViewTracker = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    trackEvent('page_view');
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   return (
@@ -20,6 +31,7 @@ function App() {
       <AuthProvider>
         <Router>
           <ScrollToTop />
+          <PageViewTracker />
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/terms" element={<TermsOfServicePage />} />

@@ -65,26 +65,98 @@ const LandingPage = () => {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "Why does FastTrack need location access?",
+                "name": "What is FastTrack and how does it work?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "FastTrack uses GPS to measure your speed and distance with precision. Location data is only collected during active timing sessions."
+                  "text": "FastTrack is a GPS-based acceleration timer for iOS that measures your 0-60 mph, 0-100 mph, quarter-mile, and half-mile times using your iPhone's GPS and accelerometer. Just mount your phone, select your vehicle, and go — the app detects your launch automatically and records your time with no button press needed."
                 }
               },
               {
                 "@type": "Question",
-                "name": "Is my data private?",
+                "name": "Is FastTrack free?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Your run data is stored securely. Shared runs are only visible to friends you add."
+                  "text": "Yes. FastTrack is completely free to download and use. All timing modes, garage management, community features, leaderboards, and groups are included at no cost."
                 }
               },
               {
                 "@type": "Question",
-                "name": "The app shows poor GPS accuracy. What should I do?",
+                "name": "How accurate is FastTrack compared to a Dragy or RaceBox?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Ensure you're outdoors with a clear view of the sky. GPS accuracy improves after a few seconds of signal acquisition."
+                  "text": "FastTrack uses iOS Motion Activity alongside GPS to deliver precise speed and movement data. Motion Activity provides real-time detection of acceleration and velocity changes, while GPS handles distance and position — together they produce reliable, repeatable results. Dedicated hardware like Dragy uses higher-frequency GPS receivers, so they can be slightly more precise in ideal conditions. For most street and track use, FastTrack gives you accurate times without carrying extra hardware."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need any extra hardware or accessories?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. FastTrack runs entirely on your iPhone's built-in GPS and accelerometer. A phone mount is recommended for safety, but no external devices, OBD adapters, or Bluetooth accessories are required."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is FastTrack available on Android?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "FastTrack is currently available on iOS only. An Android version is not available at this time."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does the app need location access?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "FastTrack uses GPS to measure your speed and distance in real time. Location data is only collected during active timing or drive sessions — the app does not track your location in the background."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What's the difference between Acceleration Mode and Drive Mode?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Acceleration Mode is for single timed runs like 0-60 or quarter-mile — it gives you a clean, focused result for each pull. Drive Mode records your entire drive in the background, logging your route on a map along with top speed and performance events throughout the session."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I track modifications and see how they affect my times?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. The Garage lets you log modifications across 10 categories including engine, forced induction, suspension, drivetrain, and more. Each mod is timestamped, so you can compare your run history before and after upgrades to see exactly what difference they made."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do leaderboards work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Leaderboards rank all FastTrack users by their best GPS-verified times across 0-60, 0-100, quarter-mile, and half-mile. Only runs recorded through the app count — no manual entries. You can also view a friends-only leaderboard to compete within your crew."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who can see my runs and profile?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You control your own visibility. Every post can be set to public or friends-only. Your garage, profile, and run history are private by default. Only friends you accept can see your friends-only content, and private group posts are visible only to group members."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "I'm getting inaccurate or inconsistent times. What can I do?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Make sure you're outdoors with a clear view of the sky — buildings, trees, and tunnels degrade GPS signal. Give the app a few seconds to lock onto satellites before starting your run. Consistent results also come from running on the same stretch of road in similar conditions. Avoid running immediately after opening the app; wait until the GPS accuracy indicator shows a strong signal."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are Groups and how do I join one?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Groups are communities within FastTrack. Auto Groups are created automatically for every vehicle model — add a car to your garage and you're in. Custom Groups can be created by anyone for local meetups, build projects, or track day crews. Each group has its own feed, threaded discussions, and member list."
                 }
               }
             ]

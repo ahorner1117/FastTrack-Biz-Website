@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Users, Share2, Globe, UserPlus, Heart, Lock, Bell, Download } from 'lucide-react';
+import { ArrowLeft, Users, Share2, Globe, UserPlus, Heart, Lock, Bell, Download, UsersRound, MessageCircle, MessagesSquare, CalendarHeart } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ExpandableFeatureCard from '@/components/ExpandableFeatureCard';
@@ -132,18 +132,24 @@ const CommunityPage = () => {
             </p>
           </motion.div>
 
-          {/* App Screenshot */}
+          {/* App Screenshots */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center mb-20"
+            className="flex justify-center gap-4 sm:gap-8 mb-20"
           >
             <img
               src="/images/explore-page-and-groups.png"
               alt="FastTrack community explore page and groups"
-              className="h-[480px] sm:h-[580px] rounded-[2rem] border-2 border-[#2a2a2a]"
+              className="h-[320px] sm:h-[520px] rounded-[2rem] border-2 border-[#2a2a2a]"
+              style={{ boxShadow: '0 0 40px rgba(0, 255, 127, 0.15)' }}
+            />
+            <img
+              src="/images/direct-messages.png"
+              alt="FastTrack direct messages conversation"
+              className="h-[320px] sm:h-[520px] rounded-[2rem] border-2 border-[#2a2a2a]"
               style={{ boxShadow: '0 0 40px rgba(0, 255, 127, 0.15)' }}
             />
           </motion.div>
@@ -165,6 +171,10 @@ const CommunityPage = () => {
               { icon: <Globe size={36} />, title: 'Public Feed', description: 'Browse runs from all public FastTrack users — discover impressive builds from around the world.', expandedDescription: 'Browse runs from all public FastTrack users. Discover impressive builds, see what\'s fast in your area, and find new people to follow. Posts sorted by newest or most popular.', expandedImage: '/images/explor.png' },
               { icon: <UserPlus size={36} />, title: 'Friend System', description: 'Add friends and see their runs in a dedicated friends feed separate from the public stream.', expandedDescription: 'Send and accept friend requests. See a dedicated friends-only feed separate from the public stream. Share posts directly to friends via DM (Instagram-style).', expandedImage: '/images/profile-page-1.png' },
               { icon: <Heart size={36} />, title: 'Likes & Comments', description: 'React to runs and leave comments. Build connections with people who share your passion.', expandedDescription: 'React to posts with likes and leave threaded comments. Reply to specific comments with nested threads. Like individual comments. Get notified when someone interacts with your content.' },
+              { icon: <UsersRound size={36} />, title: 'Vehicle Groups', description: 'Join auto-generated communities for your car or create custom groups for any purpose.', expandedDescription: 'Every vehicle model has its own group automatically. Create custom groups for local crews, build projects, or track day teams. Each group has a dedicated feed with threaded posts, media sharing, and member management.', expandedImage: '/images/groups.png' },
+              { icon: <MessageCircle size={36} />, title: 'Direct Messages', description: 'Message friends privately and share runs, photos, and videos one-on-one.', expandedDescription: 'Send private messages to any friend on FastTrack. Share posts, runs, and media directly to a conversation — Instagram-style. Get push notifications for new messages so you never miss a reply.', expandedImage: '/images/direct-messages.png' },
+              { icon: <MessagesSquare size={36} />, title: 'Group Chats', description: 'Create group conversations with your crew to plan runs, share results, and stay connected.', expandedDescription: 'Start group chats with multiple friends to coordinate meetups, compare times, and talk builds. Everyone in the chat sees shared runs and media in one place — no more juggling separate threads.' },
+              { icon: <CalendarHeart size={36} />, title: 'Car Meets & Networking', description: 'Find and organize local car meets, cruise nights, and track days through groups.', expandedDescription: 'Use custom groups to organize car meets, cruise nights, and track day events in your area. Connect with local enthusiasts, grow your network, and build a real-world community around shared performance data.' },
               { icon: <Lock size={36} />, title: 'Privacy Controls', description: 'Every post can be set to public or friends-only. You decide who sees your data.', expandedDescription: 'Every post can be public or friends-only. Your garage, profile, and run history visibility are under your control. Private group posts are only visible to members.' },
               { icon: <Bell size={36} />, title: 'Notifications', description: 'Get notified when friends post, when someone likes your run, or when you hit a new personal best.', expandedDescription: 'Push notifications for friend requests, post likes, comments, @mentions, and group invites. Tap any notification to jump directly to the relevant content. Mark all as read with one tap.' },
             ].map((card, i) => (

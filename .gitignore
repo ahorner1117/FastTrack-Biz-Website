@@ -11,6 +11,9 @@ dist
 .supabase/
 supabase/.temp/
 
+# SQL migrations (applied via Supabase dashboard)
+*.sql
+
 docs/*
 
 # Git worktrees

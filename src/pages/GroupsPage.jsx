@@ -124,18 +124,24 @@ const GroupsPage = () => {
             </p>
           </motion.div>
 
-          {/* App Screenshot */}
+          {/* App Screenshots */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex justify-center mb-20"
+            className="flex justify-center gap-4 sm:gap-8 mb-20"
           >
             <img
               src="/images/groups.png"
-              alt="FastTrack vehicle groups and forums"
-              className="h-[480px] sm:h-[580px] rounded-[2rem] border-2 border-[#2a2a2a]"
+              alt="FastTrack groups browse screen"
+              className="h-[320px] sm:h-[520px] rounded-[2rem] border-2 border-[#2a2a2a]"
+              style={{ boxShadow: '0 0 40px rgba(0, 255, 127, 0.15)' }}
+            />
+            <img
+              src="/images/individual-group.png"
+              alt="FastTrack individual group feed and discussions"
+              className="h-[320px] sm:h-[520px] rounded-[2rem] border-2 border-[#2a2a2a]"
               style={{ boxShadow: '0 0 40px rgba(0, 255, 127, 0.15)' }}
             />
           </motion.div>
